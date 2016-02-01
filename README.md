@@ -49,6 +49,7 @@ Para este ejemplo, vamos utilizar retrofit. Observen la línea "setClient" con e
 
 
 Por el contrario, para realizar la petición habilitamos la línea:
+
 ```
 	.setClient(new OkClient(okHttpClient))
     //.setClient(new LoginServiceMock(context))
