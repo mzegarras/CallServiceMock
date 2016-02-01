@@ -6,14 +6,16 @@ Por ejemplo, vamos a suponer que definen lo siguiente:
 El servicio de loging es POST
 
 Request:
+```
 {"pwd":"admin","user":"password"}
-
+```
 Response:
 
 Si el sts es 1 deberá mostrar un mensajes de error por el contrario, si el status es 0, deberá ingresar al menú principal. Entonces las tramas de response pueden ser:
 
 
 {"sts":1,"des":"Usuario o password incorrecto."}
+
 {"sts":0,"des":"Bienvenido usuario mzegarra"}
 
 Podemos usar utilizar Mock, SoapUI u otros frameworks para crear servicios mocks con tramas en duro que permitarn avanzar con el desarrollo del APP. Otra alternativa, de manera temporal, es utilizar dentro APP tramas en duro, específicamente en nuestra carpeta "assets".
