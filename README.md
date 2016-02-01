@@ -1,4 +1,5 @@
-# Cuando iniciamos un proyecto móvil, los services también están en desarrollo. Sin embargo, es común que se definan las tramas de request/response además del formato (json/xml) o también algunas cabeceras.
+
+Cuando iniciamos un proyecto móvil, los services también están en desarrollo. Sin embargo, es común, que se definan las tramas de request/response además del formato (json/xml) o también algunas cabeceras de las peticiones.
 
 Por ejemplo, vamos a suponer que definen lo siguiente:
 
