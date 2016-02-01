@@ -39,13 +39,14 @@ Adicionalmente, me gustaría avanzar con el mapear los objetos de request /respo
 02-01 00:22:52.897 31954-32713/net.msonic.callservices D/Retrofit: <--- HTTP 200 http://www.url.com/rest/v1/account/Logon (1ms)
 02-01 00:22:52.897 31954-32713/net.msonic.callservices D/Retrofit: ﻿{"sts":1,"des":"Usuario o password incorrecto."}
 02-01 00:22:52.897 31954-32713/net.msonic.callservices D/Retrofit: <--- END HTTP (51-byte body)
-```
+
+
 Para este ejemplo, vamos utilizar retrofit. Observen la línea "setClient" con el valor "LoginServiceMock", en esta clase leemos el response de los archivos de textos y evitamos que inicia la llamada http. 
 
 	```
 	//.setClient(new OkClient(okHttpClient))
     .setClient(new LoginServiceMock(context))
-```
+
 
 Por el contrario, para realizar la petición habilitamos la línea:
 ```
