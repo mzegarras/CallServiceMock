@@ -51,7 +51,7 @@ Por el contrario, para realizar la petición habilitamos la línea:
 ```
 	.setClient(new OkClient(okHttpClient))
     //.setClient(new LoginServiceMock(context))
-```
+
 
 Ejemplo completo.
 ```
@@ -64,7 +64,7 @@ Ejemplo completo.
                 //.setClient(new OkClient(okHttpClient))
                 .setClient(new LoginServiceMock(context))
                 .build();
-```
+
 En nuestro fragment o activity, la llamada al service es transparente no se entera si hace la llamda http o si lee un archivo.
 
 
@@ -109,4 +109,3 @@ En nuestro fragment o activity, la llamada al service es transparente no se ente
         }
 
     }
-```
