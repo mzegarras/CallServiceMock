@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import net.msonic.callservices.ws.dto.LoginResponse;
 import net.msonic.callservices.ws.service.LoginProxy;
@@ -65,7 +66,7 @@ public class MainActivityFragment extends Fragment {
 
         @Override
         protected LoginResponse doInBackground(String... params) {
-            LoginProxy loginProxy = new LoginProxy(getActivity());
+            LoginProxy loginProxy = new LoginProxy(getContext());
 
             LoginResponse loginResponse =  loginProxy.login(params[0], params[1]);
 
@@ -78,7 +79,14 @@ public class MainActivityFragment extends Fragment {
             //txt.setText("Executed"); // txt.setText(result);
             // might want to change "executed" for the returned string passed
             // into onPostExecute() but that is upto you
-            Log.d(TAG,"onPostExecute");
+
+
+            if(loginResponse.status==0){
+                Log.d(TAG,"Reemplazar fragment");
+            }else{
+                Toast.makeText(getContext(),
+                                loginResponse.descripcion, Toast.LENGTH_SHORT).show();
+            }
 
 
 

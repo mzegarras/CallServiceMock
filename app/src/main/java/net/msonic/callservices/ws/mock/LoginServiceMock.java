@@ -33,7 +33,8 @@ public class LoginServiceMock implements Client {
 
         Log.d(TAG, "fetching uri: " + uri.toString());
 
-        String filename="LoginRequest_OK.txt";
+        //String filename="LoginRequest_OK.txt";
+        String filename="LoginRequest_UserPwdIncorrect.txt";
 
 
         InputStream is = context.getAssets().open(filename);
