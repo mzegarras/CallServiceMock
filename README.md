@@ -13,10 +13,13 @@ Response:
 
 Si el sts es 1 deberá mostrar un mensajes de error por el contrario, si el status es 0, deberá ingresar al menú principal. Entonces las tramas de response pueden ser:
 
-
+```
 {"sts":1,"des":"Usuario o password incorrecto."}
+```
 
+```
 {"sts":0,"des":"Bienvenido usuario mzegarra"}
+```
 
 Podemos usar utilizar Mock, SoapUI u otros frameworks para crear servicios mocks con tramas en duro que permitarn avanzar con el desarrollo del APP. Otra alternativa, de manera temporal, es utilizar dentro APP tramas en duro, específicamente en nuestra carpeta "assets".
 
@@ -25,6 +28,7 @@ LoginRequest_UserPwdIncorrect.txt
 
 Adicionalmente, me gustaría avanzar con el mapear los objetos de request /response y cabeceras:
 
+```
 02-01 00:22:52.887 31954-32713/net.msonic.callservices D/Retrofit: ---> HTTP POST http://www.url.com/rest/v1/account/Logon
 02-01 00:22:52.887 31954-32713/net.msonic.callservices D/Retrofit: Accept: application/json
 02-01 00:22:52.887 31954-32713/net.msonic.callservices D/Retrofit: Content-Type: application/json
@@ -35,21 +39,22 @@ Adicionalmente, me gustaría avanzar con el mapear los objetos de request /respo
 02-01 00:22:52.897 31954-32713/net.msonic.callservices D/Retrofit: <--- HTTP 200 http://www.url.com/rest/v1/account/Logon (1ms)
 02-01 00:22:52.897 31954-32713/net.msonic.callservices D/Retrofit: ﻿{"sts":1,"des":"Usuario o password incorrecto."}
 02-01 00:22:52.897 31954-32713/net.msonic.callservices D/Retrofit: <--- END HTTP (51-byte body)
-
+```
 Para este ejemplo, vamos utilizar retrofit. Observen la línea "setClient" con el valor "LoginServiceMock", en esta clase leemos el response de los archivos de textos y evitamos que inicia la llamada http. 
-	
+
+	```
 	//.setClient(new OkClient(okHttpClient))
     .setClient(new LoginServiceMock(context))
-
+```
 
 Por el contrario, para realizar la petición habilitamos la línea:
-
+```
 	.setClient(new OkClient(okHttpClient))
     //.setClient(new LoginServiceMock(context))
-
+```
 
 Ejemplo completo.
-
+```
     RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setRequestInterceptor(requestInterceptor)
@@ -59,18 +64,19 @@ Ejemplo completo.
                 //.setClient(new OkClient(okHttpClient))
                 .setClient(new LoginServiceMock(context))
                 .build();
-
+```
 En nuestro fragment o activity, la llamada al service es transparente no se entera si hace la llamda http o si lee un archivo.
 
 
-======================================================================
+```
  LoginServiceTask loginServiceTask = new LoginServiceTask();
 
                 loginServiceTask.execute(new String[]{txtUser.getText().toString().trim(),
                         txtPwd.getText().toString().trim()});
 
+```
 
-======================================================================
+```
     private class LoginServiceTask extends AsyncTask<String, Void, LoginResponse> {
 
 
@@ -103,3 +109,4 @@ En nuestro fragment o activity, la llamada al service es transparente no se ente
         }
 
     }
+```
