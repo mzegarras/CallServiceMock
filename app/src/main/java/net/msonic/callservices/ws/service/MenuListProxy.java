@@ -8,7 +8,7 @@ import com.squareup.okhttp.OkHttpClient;
 
 import net.msonic.callservices.ws.contract.LoginService;
 import net.msonic.callservices.ws.dto.Menu;
-import net.msonic.callservices.ws.mock.LoginServiceMock;
+import net.msonic.callservices.ws.mock.MenuListServiceMock;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -65,7 +65,7 @@ public class MenuListProxy {
 
                 .setEndpoint(HOST_SERVICE)
                 //.setClient(new OkClient(okHttpClient))
-                .setClient(new LoginServiceMock(context))
+                .setClient(new MenuListServiceMock(context))
                 .build();
 
         return restAdapter;
