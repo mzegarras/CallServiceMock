@@ -83,6 +83,10 @@ public class MainActivityFragment extends Fragment {
 
             if(loginResponse.status==0){
                 Log.d(TAG,"Reemplazar fragment");
+
+                MainActivityFragment.this.getFragmentManager().beginTransaction().replace(R.id.fragment_container,new MenuFragment()
+                ).commit();
+
             }else{
                 Toast.makeText(getContext(),
                                 loginResponse.descripcion, Toast.LENGTH_SHORT).show();
